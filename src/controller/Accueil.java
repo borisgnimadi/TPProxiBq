@@ -70,7 +70,8 @@ public class Accueil extends HttpServlet {
 			if (isLogged) {
 				HttpSession session = request.getSession();
 				session.setAttribute("isLogged", isLogged);
-				address = "/WEB-INF/index.jsp";
+//				address = "/WEB-INF/index.jsp";
+				address = "/login.jsp";
 			} else {
 				String errorLogin = "Mot de passe incorrect ! ";
 				request.setAttribute("errorLogin", errorLogin);
