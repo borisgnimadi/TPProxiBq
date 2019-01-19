@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,8 +32,8 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<img class="mb-4 img-circle" src="images/logo.jpg" alt="" width="72"
-					height="72">
+				<a href="./"><img class="mb-4 img-circle" src="images/logo.jpg"
+					alt="" width="60" height="60"></a>
 
 				<button type="button" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
@@ -43,30 +45,11 @@
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="">Accueil</a></li>
-					<!-- Dropdown -->
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" id="navbardrop"
-						data-toggle="dropdown"> Gérant </a>
-						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#">Consulter les comptes</a> <a
-								class="dropdown-item" href="#">Auditer</a>
-						</div></li>
-					<!-- Dropdown -->
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" id="navbardrop"
-						data-toggle="dropdown"> Conseiller </a>
-						<div class="dropdown-menu">
-							<div>
-								<a class="dropdown-item" href="#">Ajouter un compte client</a>
-							</div>
-							<div>
-								<a class="dropdown-item" href="#">Modifier un compte client</a>
-							</div>
-							<div>
-								<a class="dropdown-item" href="#">Suppimer un compte client</a>
-							</div>
-						</div></li>
+					<li class="active"><a href="./">Accueil</a></li>
+					<li class="nav-item"><a class="nav-link" href="?page=gerant"
+						id="navbardrop"> Gérant </a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="?page=conseiller" id="navbardrop"> Conseiller </a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">

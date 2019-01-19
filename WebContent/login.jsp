@@ -21,7 +21,8 @@
 <body class="text-center">
 	<div class="container col-lg-12">
 
-		<%
+		<% // Une fois loggé, le user n'a plus besoin d'accéder à cette page.
+		// On le redirige vers la page d'accueil avec des users(gérant/conseiller).
 			if (session.getAttribute("isLogged") != null) {
 				Boolean sessionIsLogged = (Boolean) session.getAttribute("isLogged");
 				if (sessionIsLogged == true) {
