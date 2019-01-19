@@ -399,3 +399,24 @@ footer .footer-bottom {
 .text-green{
 	color:green;
 }
+
+.serviceHeader{
+	margin-top : 30px;
+	margin-bottom : 30px;
+	padding: 24px;
+    border-radius: 6px;
+	background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+}
+
+.formStyle{
+	margin-top:25px;
+}
+
+
+.navbar-nav>li>.dropdown-menu {
+	margin-top: 10;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	padding: 5px 5px 5px 5px;
+}

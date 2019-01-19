@@ -35,7 +35,7 @@ public abstract class AbstractDaoJdbc {
 	public static Connection getConnetion() throws ClassNotFoundException, SQLException {
 
 		Connection cn;
-        String urlDB = "jdbc:mysql://localhost:3306/users";
+        String urlDB = "jdbc:mysql://localhost:3306/proxibanque";
         String userDB = "root";
         String passwordDB = "";
         

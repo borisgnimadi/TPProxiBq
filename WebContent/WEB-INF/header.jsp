@@ -1,7 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<%
+	String activeGerant = "";
+	String activeConseiller = "";
+	String userType = "";
 
+	if (request.getParameter("page") != null) {
+		if (request.getParameter("page").equals("gerant")) {
+			activeGerant = "nav-item active";
+			userType = "gerant";
+		} else {
+			activeConseiller = "nav-item active";
+			userType = "conseiller";
+
+		} 
+	}
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,23 +28,11 @@
 <!-- Bootstrap core CSS -->
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 
-<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-<!-- Custom styles for this template -->
 <link rel="stylesheet" type="text/css" href="css/style.css">
-<style>
-.navbar-nav>li>.dropdown-menu {
-	margin-top: 10;
-	border-top-left-radius: 0;
-	border-top-right-radius: 0;
-	padding: 5px 5px 5px 5px;
-}
-</style>
 </head>
 <body>
 	<!-- Navigation -->
-	<nav class="navbar navbar-inverse navbar-fixed-top">
+	<nav class="navbar navbar-inverse bg-primary navbar-fixed-top"> 
 		<div class="container">
 			<div class="navbar-header">
 				<a href="./"><img class="mb-4 img-circle" src="images/logo.jpg"
@@ -45,19 +48,17 @@
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="./">Accueil</a></li>
-					<li class="nav-item"><a class="nav-link" href="?page=gerant"
+					<li class=""><a href="./">Accueil</a></li>
+					<li class="<%=activeGerant%>"><a class="nav-link" href="?page=gerant"
 						id="navbardrop"> Gérant </a></li>
-					<li class="nav-item"><a class="nav-link"
+					<li class="<%=activeConseiller%>"><a class="nav-link"
 						href="?page=conseiller" id="navbardrop"> Conseiller </a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="deconnexion.jsp">Deconnexion</a></li>
+					<li><a href="deconnexion.jsp">Déconnexion</a></li>
 				</ul>
 
 			</div>
-
-			<!--/.nav-collapse -->
 		</div>
 	</nav>

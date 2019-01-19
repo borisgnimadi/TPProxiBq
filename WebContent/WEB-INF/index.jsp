@@ -1,38 +1,23 @@
 <%@ include file="header.jsp"%>
 
 <div class="contenaire">
-	<p>Bonjour ${user.name}</p>
+<%-- 	<p>Bonjour ${user.name}</p> --%>
 
 	<%
-		String activeGerant = "";
-		String activeConseiller = "";
-		String userType = "";
 		// si user non loggé, on le redirige vers la page de login.
 		if (session.getAttribute("isLogged") == null || (Boolean) session.getAttribute("isLogged") == false) {
 			response.sendRedirect("login");
 		}
 
-		if (request.getParameter("page") != null) {
-			if (request.getParameter("page").equals("gerant")) {
-				activeGerant = "active";
-				userType = "gerant";
-			} else{
-				activeConseiller = "active";
-			userType = "conseiller";
-			} }
+
 	%>
 
-	<div class="col-lg-12 col-md-12" id="espacepersonnelle"
+	<div class="col-lg-12 col-md-12" id=""
 		style="padding-top: 10px">
 
-		<ul class="nav nav-pills">
-			<li class="<%=activeGerant%>"><a href="?page=gerant">Gérant</a></li>
-			<li class="<%=activeConseiller%>"><a href="?page=conseiller">Conseiller</a></li>
 
-		</ul>
 		<div class="tab-content">
 <% 
-
             switch(userType){
                 case "gerant":%><%@include file="gerant.jsp"%><%
                 break; 
@@ -41,8 +26,8 @@
             } 
 
         %>		
-		</div>
 
+	</div>
 	</div>
 
 	<!-- form action="addUser" method="post">

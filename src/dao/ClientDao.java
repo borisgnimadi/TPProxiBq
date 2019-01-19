@@ -41,6 +41,9 @@ public class ClientDao extends AbstractDaoJdbc implements UserDao {
 			ResultSet rs = st.executeQuery(req);
 			while (rs.next()) {
 				User user = new User(rs.getInt("id"), rs.getString("name"), rs.getString("firstName"));
+				System.out.println( rs.getString("name"));
+				System.out.println( rs.getString("id"));
+				System.out.println( rs.getString("firstName"));
 				return user;
 			}
 
