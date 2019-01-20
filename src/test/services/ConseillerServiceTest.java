@@ -8,7 +8,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.prestibanque.models.*;
+import model.*;
+import service.ConseillerService;
 
 public class ConseillerServiceTest {
 	private ConseillerService service;

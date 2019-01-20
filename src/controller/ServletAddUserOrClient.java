@@ -10,13 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.ClientDao;
+import model.Client;
 import service.Login;
 
 /**
- * Servlet implementation class Accueil
+ * Cette Servlet gère les opérations du CRUD, en faisant appel aux classes
+ * concernées.
  */
-@WebServlet({ "/accueilAppli", "/login", "/deleteUser", "/addUser", "/editUser", "/displayUser", "/Servlet" })
-public class Accueil extends HttpServlet {
+@WebServlet({ "/addConseiller", "/addClient", "/deleteClient", "/editClient" })
+public class ServletAddUserOrClient extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	String address;
@@ -24,7 +27,7 @@ public class Accueil extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public Accueil() {
+	public ServletAddUserOrClient() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -35,12 +38,6 @@ public class Accueil extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String path = request.getRequestURI();
-		if (path.contains("login")) {address = "/login.jsp";}
-		if (path.contains("accueilAppli")) {address = "/WEB-INF/index.jsp";}
-
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(address);
-		dispatcher.forward(request, response);
 
 	}
 
@@ -50,26 +47,28 @@ public class Accueil extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
+		
 		String path = request.getRequestURI();
-
-		if (path.contains("login") && request.getParameter("email") != null) { // si le user a tenté de se logger
-			boolean isLogged = Login.login(request.getParameter("email"), request.getParameter("password"));
-			System.out.println(isLogged + "test login");
-			if (isLogged) {
-				HttpSession session = request.getSession();
-				session.setAttribute("isLogged", isLogged);
-//				address = "/WEB-INF/index.jsp";
-				address = "/login.jsp";
-			} else {
-				String errorLogin = "Mot de passe incorrect ! ";
-				request.setAttribute("errorLogin", errorLogin);
-				address = "/login.jsp";
-			}
+		ClientDao dao = new ClientDao();
+		if (path.contains("addClient")) {
+			Client cl = new Client(
+					request.getParameter("nom"), 
+					request.getParameter("prenom"), 
+					request.getParameter("adresse"), 
+					request.getParameter("ville"), 
+					Integer.valueOf(request.getParameter("codePostal")), 
+					request.getParameter("phone"), 
+					true
+					);
+			
+				System.out.println("test dans Servlet : "+cl);
+			dao.create(cl);
+			address = "/WEB-INF/index.jsp";
 		}
-
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(address);
 		dispatcher.forward(request, response);
+
 	}
 
 }

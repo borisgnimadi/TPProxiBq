@@ -1,8 +1,8 @@
 package model;
 
 public abstract class Personne {
-	private String nom;
-	private String prenom;
+	protected String nom;
+	protected String prenom;
 
 	public Personne(String nom, String prenom) {
 		super();

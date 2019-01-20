@@ -2,18 +2,15 @@ package test.services;
 
 import static org.junit.Assert.*;
 
+
 import java.util.Date;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.prestibanque.models.Agence;
-import com.prestibanque.models.Client;
-import com.prestibanque.models.CompteCourant;
-import com.prestibanque.models.CompteEpargne;
-import com.prestibanque.models.Conseiller;
-import com.prestibanque.models.Gerant;
+import model.*;
+import service.*;
 
 public class AgenceServiceTest {
 	private AgenceService service;

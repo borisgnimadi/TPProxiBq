@@ -34,4 +34,6 @@ public class Conseiller extends Personne {
 		getClients().add(client);
 		client.setConseiller(this);
 	}
+	
+	
 }

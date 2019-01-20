@@ -4,25 +4,41 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import model.User;
+import model.Client;
+import model.Personne;
 
 public class ClientDao extends AbstractDaoJdbc implements UserDao {
 
 	@Override
-	public void create(User u) {
+	public void create(Personne p) {
+		System.out.println("test dans DAO : " + p);
 
 		try {
 			Connection cn = AbstractDaoJdbc.getConnetion();
 
-			String req = "INSERT INTO user (name,firstname)  VALUES ( ?, ?)";
+			String req = "INSERT INTO client (nom,prenom,phone,adresse,ville,"
+					+ " code_postal,CompteCourant,CompteEpargne,typeCarteBancaire) "
+					+ " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement st = AbstractDaoJdbc.getConnetion().prepareStatement(req);
-			st.setString(1, u.getName());
-			st.setString(2, u.getFirstname());
+			st.setString(1, null);
+			st.setString(2, null);
+			/*
+			 * st.setString(3, p.getPhone()); st.setString(4, p.getAdresse());
+			 * st.setString(5, p.getVille()); st.setInt(6, p.getCodePostal());
+			 */
+			st.setString(3, null);
+			st.setString(4, null);
+			st.setString(5, null);
+			st.setInt(6, 0);
+			st.setString(7, null);
+			st.setString(8, null);
+			st.setString(9, null);
+
 
 			st.execute();
 
-			System.out.println("une ligne inserée avec succès !");
 			AbstractDaoJdbc.close(cn, st, null);
+			System.out.println("une ligne inserée avec succès !");
 			;
 		} catch (Exception e) {
 			System.err.println("Erreur : Pas d'insertion !");
@@ -32,19 +48,18 @@ public class ClientDao extends AbstractDaoJdbc implements UserDao {
 	}
 
 	@Override
-	public User findByUsername(String name) {
+	public Client findByUsername(String name) {
 		try {
 			Connection cn = AbstractDaoJdbc.getConnetion();
 
-			String req = "SELECT * FROM user WHERE firstname LIKE '%"+name+"%' ";
+			String req = "SELECT * FROM client WHERE firstname LIKE '%" + name + "%' ";
 			PreparedStatement st = AbstractDaoJdbc.getConnetion().prepareStatement(req);
 			ResultSet rs = st.executeQuery(req);
 			while (rs.next()) {
-				User user = new User(rs.getInt("id"), rs.getString("name"), rs.getString("firstName"));
-				System.out.println( rs.getString("name"));
-				System.out.println( rs.getString("id"));
-				System.out.println( rs.getString("firstName"));
-				return user;
+				Client client = new Client(rs.getString("nom"), rs.getString("prenom"), rs.getString("adresse"),
+						rs.getString("ville"), rs.getInt("	code_postal"), rs.getString("phone"),
+						rs.getBoolean("isEntreprise"));
+				return client;
 			}
 
 			System.out.println("une ligne trouvée avec succès !");
@@ -58,25 +73,19 @@ public class ClientDao extends AbstractDaoJdbc implements UserDao {
 	}
 
 	@Override
-	public void update(User user) {
+	public void update(Personne user) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public User findById(int id) {
+	public Personne findById(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void updateOld() {
 		// TODO Auto-generated method stub
 
 	}

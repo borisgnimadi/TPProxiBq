@@ -101,4 +101,13 @@ public class Client extends Personne {
 		this.conseillerRef = new WeakReference<Conseiller>(conseiller);
 	}
 
+	@Override
+	public String toString() {
+		return "Client [nom=" + nom + ",prénom=" + prenom + ",adresse=" + adresse + ", ville=" + ville + ", code_postal=" + code_postal + ", telephone="
+				+ telephone + ", compteCourant=" + compteCourant + ", compteEpargne=" + compteEpargne
+				+ ", carteBancaire=" + carteBancaire + ", isEntreprise=" + isEntreprise + ", conseillerRef="
+				+ conseillerRef + "]";
+	}
+
+	
 }

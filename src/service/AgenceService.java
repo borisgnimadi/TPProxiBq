@@ -1,6 +1,6 @@
 package service;
 
-import com.prestibanque.models.*;
+import model.*;
 
 public class AgenceService {
 	private Agence agence;

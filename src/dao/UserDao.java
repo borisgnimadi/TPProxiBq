@@ -6,7 +6,8 @@
 package dao;
 
 import java.util.List;
-import model.User;
+
+import model.Personne;
 
 /**
  *
@@ -15,13 +16,12 @@ import model.User;
 
 public interface UserDao {
 	
-	public void create(User p);
-	public User findByUsername(String name);	
-	public void update(User user);
-	public User findById(int id);
+	public void create(Personne p);
+	public Personne findByUsername(String name);	
+	public void update(Personne user);
+	public Personne findById(int id);
 	public void delete(int id);
-	public void updateOld();
-	public static List<User> findAll() {
+	public static List<Personne> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}

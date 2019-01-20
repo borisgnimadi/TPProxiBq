@@ -1,6 +1,6 @@
 package service;
 
-import com.prestibanque.models.*;
+import model.*;
 
 public class ConseillerService {
 	private Conseiller conseiller;
